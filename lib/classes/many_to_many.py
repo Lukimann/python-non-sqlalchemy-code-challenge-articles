@@ -18,18 +18,19 @@ class Author:
              raise ValueError("Author's name must be longer than 0 characters")
          self.name = name
 
-     def articles(self, title):
-         self.title = title
+     @property
+     def articles(self):
+         return self.title 
 
      def magazines(self):
-         pass
+         return  set(self.articles)
 
      def add_article(self, magazine, title):
          self.magazine = magazine
          self.title = title
 
      def topic_areas(self):
-         pass
+         return list(self.title)
 
 class Magazine:
      def __init__(self, name, category):
@@ -45,14 +46,15 @@ class Magazine:
              raise ValueError("Category must contain at least one character")
          self.category = category
 
+     @property    
      def articles(self):
-         pass
+         return self.articles.copy()
 
      def contributors(self):
          pass
 
      def article_titles(self):
-         pass
+         return [article.title for  article in self.articles]
 
      def contributing_authors(self):
          pass
